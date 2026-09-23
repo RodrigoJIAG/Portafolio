@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tiempo Extra y SNC</title>
+
+<style>
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+:root{
+
+    --navy:#0f172a;
+    --navy-light:#172033;
+
+    --card:#1e293b;
+
+    --blue:#2563eb;
+    --blue-light:#3b82f6;
+
+    --white:#ffffff;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+
+    --border:rgba(255,255,255,.08);
+
+}
+
+
+/* =====================================
+   GENERAL
+===================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+}
+
+
+body{
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #172033 0%,
+            #0f172a 45%,
+            #080d17 100%
+        );
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:var(--white);
+
+    padding:30px;
+
+}
+
+
+/* =====================================
+   CONTENEDOR PRINCIPAL
+===================================== */
+
+.container{
+
+    width:100%;
+
+    max-width:950px;
+
+    background:rgba(15,23,42,.92);
+
+    border-radius:18px;
+
+    padding:50px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,.45);
+
+}
+
+
+/* =====================================
+   TITULO
+===================================== */
+
+h1{
+
+    color:var(--white);
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    margin-bottom:10px;
+
+}
+
+
+.linea{
+
+    width:70px;
+
+    height:3px;
+
+    background:var(--blue);
+
+    margin:25px auto 35px;
+
+    border-radius:10px;
+
+}
+
+
+/* =====================================
+   SUBTITULOS
+===================================== */
+
+h3{
+
+    color:var(--white);
+
+    font-size:20px;
+
+    margin-bottom:12px;
+
+    font-weight:600;
+
+}
+
+
+p{
+
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+
+/* =====================================
+   LINEAS DIVISORIAS
+===================================== */
+
+.linea1{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:30px 0;
+
+}
+
+
+/* =====================================
+   INFORMACION
+===================================== */
+
+.info{
+
+    max-width:850px;
+
+    margin:30px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(300px,1fr));
+
+    gap:25px;
+
+}
+
+
+.info > div{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:25px;
+
+    text-align:left;
+
+    transition:.3s ease;
+
+}
+
+
+.info > div:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(59,130,246,.45);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+}
+
+
+.info h3{
+
+    color:var(--blue-light);
+
+    margin-bottom:15px;
+
+}
+
+
+/* =====================================
+   LISTA DE SOLUCION
+===================================== */
+
+.info p{
+
+    line-height:2;
+
+}
+
+
+/* =====================================
+   IMAGEN EXCEL
+===================================== */
+
+.info img{
+
+    display:block;
+
+    width:70px;
+
+    margin:20px auto 5px;
+
+}
+
+
+/* =====================================
+   BOTON
+===================================== */
+
+.btn-pdf{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:13px 28px;
+
+    background:var(--blue);
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+
+.btn-pdf:hover{
+
+    background:var(--blue-light);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.30);
+
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+
+    margin-top:40px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+
+/* =====================================
+   MODAL
+===================================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:9999;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(2,6,23,.90);
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    backdrop-filter:blur(5px);
+
+}
+
+
+/* =====================================
+   CONTENEDOR MODAL
+===================================== */
+
+.modal-contenido{
+
+    width:95%;
+
+    max-width:1100px;
+
+    height:90vh;
+
+    background:#111827;
+
+    border-radius:14px;
+
+    position:relative;
+
+    padding:15px;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.60);
+
+}
+
+
+/* =====================================
+   PDF
+===================================== */
+
+#pdfViewer{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:white;
+
+}
+
+
+/* =====================================
+   CERRAR
+===================================== */
+
+.cerrar{
+
+    position:absolute;
+
+    right:12px;
+
+    top:-45px;
+
+    width:35px;
+
+    height:35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    border:1px solid var(--border);
+
+    transition:.2s;
+
+}
+
+
+.cerrar:hover{
+
+    background:#334155;
+
+    transform:scale(1.05);
+
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:768px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+
+    .container{
+
+        padding:30px 20px;
+
+    }
+
+
+    h1{
+
+        font-size:30px;
+
+    }
+
+
+    p{
+
+        font-size:15px;
+
+    }
+
+
+    .info{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .modal{
+
+        padding:10px;
+
+    }
+
+
+    .modal-contenido{
+
+        width:100%;
+
+        height:90vh;
+
+        padding:8px;
+
+    }
+
+
+    .cerrar{
+
+        right:5px;
+
+        top:-45px;
+
+    }
+
+}
+
+.herramientas {
+    width: 100%;
+}
+
+.herramientas h3 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.herramientas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.herramienta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.herramienta img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.herramienta p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .herramientas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =================================
+         TITULO
+    ================================== -->
+
+    <h1>
+        Proyecto - Plataforma de capacitacion
+    </h1>
+
+
+    <div class="linea"></div>
+
+
+    <!-- =================================
+         OBJETIVO
+    ================================== -->
+
+    <h3>
+        Objetivo
+    </h3>
+
+    <p>
+        Desarrollar una página web para centralizar información de diferentes temas de capacitación y sus respectivas evaluaciones por departamento, facilitando el acceso al contenido y el seguimiento de los conocimientos adquiridos.
+        Adicionalmente, se busca reducir costos asociados a la impartición de cursos, permitiendo que el personal pueda consultar los contenidos y realizar las evaluaciones fuera de horario laboral, contribuyendo al desarrollo y fortalecimiento de sus conocimientos.
+    </p>
+
+
+    <div class="linea1"></div>
+
+
+    <!-- =================================
+         PROBLEMA
+    ================================== -->
+
+    <h3>
+        Problema identificado
+    </h3>
+
+    <p>
+        La gestión de la capacitación del personal era limitada, lo que contribuía a un incremento de hallazgos derivados de la falta de conocimiento o actualización en los diferentes temas.
+        Asimismo, las evaluaciones se realizaban en formato físico, generando un mayor consumo de papel y dificultando su control y seguimiento. La entrega y captura manual de cada evaluación prolongaba los tiempos de procesamiento, ocasionando retrasos en la consolidación de resultados y entrega de información dentro de los tiempos establecidos.
+
+    </p>
+
+
+    <div class="linea1"></div>
+
+
+    <!-- =================================
+         INFORMACION
+    ================================== -->
+
+    <section class="info">
+
+
+        <!-- SOLUCION -->
+
+        <div>
+
+            <h3>
+                Solución
+            </h3>
+
+            <p>
+               Desarrollar una página web de capacitación que permita al personal adquirir conocimientos mediante contenidos auditivos, visuales y didácticos, facilitando el aprendizaje y fortaleciendo sus competencias de manera accesible e interactiva.
+            </p>
+
+        </div>
+
+
+        <!-- HERRAMIENTAS -->
+
+       <div class="herramientas">
+
+    <h3>Herramientas</h3>
+
+    <div class="herramientas-grid">
+
+        <div class="herramienta">
+            <img
+                src="https://cdn-icons-png.flaticon.com/128/888/888850.png"
+                alt="Excel"
+            >
+            <p>Microsoft Excel</p>
+        </div>
+
+        <div class="herramienta">
+            <img
+                src="https://images.icon-icons.com/3053/PNG/96/microsoft_onedrive_alt_macos_bigsur_icon_189976.png"
+                alt="OneDrive"
+            >
+            <p>OneDrive</p>
+        </div>
+
+        <div class="herramienta">
+            <img
+                src="https://images.icon-icons.com/2107/PNG/96/file_type_html_icon_130541.png"
+                alt="HTML"
+            >
+            <p>HTML</p>
+        </div>
+
+        <div class="herramienta">
+            <img
+                src="https://images.icon-icons.com/2107/PNG/96/file_type_css_icon_130661.png"
+                alt="CSS"
+            >
+            <p>CSS</p>
+        </div>
+
+        <div class="herramienta">
+            <img
+                src="https://images.icon-icons.com/2108/PNG/512/java_icon_130901.png"
+                alt="JavaScript"
+            >
+            <p>JavaScript</p>
+        </div>
+
+    </div>
+
+</div>
+        
+
+    </section>
+
+    <div class="linea1"></div>
+
+
+    <!-- =================================
+         BOTON PDF
+    ================================== -->
+
+    <button
+        class="btn-pdf"
+        onclick="abrirPDFModal()"
+    >
+
+        Ver detalles del proyecto →
+
+    </button>
+
+
+    <!-- =================================
+         MODAL PDF
+    ================================== -->
+
+    <div
+        id="pdfModal"
+        class="modal"
+    >
+
+        <div class="modal-contenido">
+
+
+            <span
+                class="cerrar"
+                onclick="cerrarPDFModal()"
+            >
+
+                &times;
+
+            </span>
+
+
+            <iframe
+                id="pdfViewer"
+                src=""
+                allow="autoplay"
+            >
+            </iframe>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        Jimenez Aguas Rodrigo
+
+    </footer>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   ABRIR PDF
+===================================== */
+
+function abrirPDFModal(){
+
+    const pdf =
+        "https://drive.google.com/file/d/12d0PXR7aM5A7-I_SZISriIjpLltPGVq0/preview";
+
+
+    document.getElementById("pdfViewer").src = pdf;
+
+
+    document.getElementById("pdfModal").style.display = "flex";
+
+}
+
+
+/* =====================================
+   CERRAR PDF
+===================================== */
+
+function cerrarPDFModal(){
+
+    document.getElementById("pdfModal").style.display = "none";
+
+
+    document.getElementById("pdfViewer").src = "";
+
+}
+
+
+/* =====================================
+   CERRAR AL DAR CLICK FUERA
+===================================== */
+
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("pdfModal");
+
+
+    if(event.target === modal){
+
+        cerrarPDFModal();
+
+    }
+
+}
+
+
+/* =====================================
+   CERRAR CON ESC
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            cerrarPDFModal();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
