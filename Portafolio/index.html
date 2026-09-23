@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portafolio Profesional | Rodrigo Jimenez Aguas</title>
+
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0b1120;
+    color:#f8fafc;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:65vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    background:
+    linear-gradient(
+        rgba(7,15,30,.92),
+        rgba(7,15,30,.96)
+    ),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600");
+
+    background-size:cover;
+    background-position:center;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+
+.hero h1{
+
+    font-size:52px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    color:#ffffff;
+
+    margin-bottom:20px;
+}
+
+
+.hero h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+
+    height:4px;
+
+    background:#2563eb;
+
+    margin:18px auto 0;
+
+    border-radius:5px;
+}
+
+
+.hero p{
+
+    max-width:900px;
+
+    color:#cbd5e1;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+    margin-top:10px;
+}
+
+
+/* =====================================================
+   CARDS DE NAVEGACIÓN
+===================================================== */
+
+.info{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+    padding:60px 20px;
+}
+
+
+.info-card{
+
+    background:#111827;
+
+    border:1px solid #243047;
+
+    border-radius:14px;
+
+    padding:30px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:
+    transform .3s ease,
+    border .3s ease,
+    box-shadow .3s ease;
+}
+
+
+.info-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:#2563eb;
+}
+
+
+.info-card:hover{
+
+    transform:translateY(-7px);
+
+    border-color:#2563eb;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.35);
+}
+
+
+.info-card h3{
+
+    color:#ffffff;
+
+    margin-bottom:12px;
+
+    font-size:21px;
+}
+
+
+.info-card p{
+
+    color:#94a3b8;
+
+    line-height:1.6;
+
+    font-size:15px;
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.cursos{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:70px 20px;
+}
+
+
+.cursos h2{
+
+    text-align:center;
+
+    color:#ffffff;
+
+    margin-bottom:45px;
+
+    font-size:34px;
+
+    font-weight:600;
+}
+
+
+.cursos h2::after{
+
+    content:"";
+
+    display:block;
+
+    width:55px;
+
+    height:3px;
+
+    background:#2563eb;
+
+    margin:15px auto 0;
+
+    border-radius:5px;
+}
+
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.contenedor{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+}
+
+
+/* =====================================================
+   CARDS DE PROYECTOS
+===================================================== */
+
+.card{
+
+    background:
+    linear-gradient(
+        145deg,
+        #111827,
+        #172033
+    );
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid #243047;
+
+    transition:
+    transform .3s ease,
+    border .3s ease,
+    box-shadow .3s ease;
+}
+
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:5px;
+    height:100%;
+
+    background:#2563eb;
+}
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#2563eb;
+
+    box-shadow:
+    0 18px 40px rgba(0,0,0,.4);
+}
+
+
+.card-icon{
+
+    font-size:42px;
+
+    margin-bottom:18px;
+}
+
+
+.card h3{
+
+    color:#ffffff;
+
+    margin-bottom:15px;
+
+    font-size:21px;
+}
+
+
+.card p{
+
+    color:#94a3b8;
+
+    line-height:1.7;
+
+    font-size:15px;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:22px;
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    padding:11px 20px;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+
+.card:hover .btn{
+
+    background:#3b82f6;
+}
+
+
+/* =====================================================
+   COMPETENCIAS
+===================================================== */
+
+.competencia-card{
+
+    background:#111827;
+
+    border:1px solid #243047;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    transition:.3s;
+}
+
+
+.competencia-card:hover{
+
+    border-color:#2563eb;
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.25);
+}
+
+
+.competencia-card h3{
+
+    color:#ffffff;
+
+    margin-bottom:20px;
+
+    font-size:20px;
+}
+
+
+.competencia-card p{
+
+    color:#cbd5e1;
+
+    line-height:2;
+
+    font-size:15px;
+}
+
+
+.competencia-card strong{
+
+    color:#60a5fa;
+}
+
+
+/* =====================================================
+   LOGROS
+===================================================== */
+
+.logro-card{
+
+    background:#111827;
+
+    border:1px solid #243047;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+
+.logro-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#2563eb;
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.25);
+}
+
+
+.logro-icon{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+
+.logro-card h3{
+
+    color:#ffffff;
+
+    margin-bottom:12px;
+}
+
+
+.logro-card p{
+
+    color:#94a3b8;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   CONTACTO
+===================================================== */
+
+.importante{
+
+    max-width:1100px;
+
+    margin:40px auto 70px;
+
+    background:#111827;
+
+    border-radius:15px;
+
+    border:1px solid #243047;
+
+    padding:40px;
+
+    text-align:center;
+}
+
+
+.importante h2{
+
+    color:#ffffff;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+}
+
+
+.importante h2::after{
+
+    content:"";
+
+    display:block;
+
+    width:50px;
+
+    height:3px;
+
+    background:#2563eb;
+
+    margin:15px auto;
+}
+
+
+.importante p{
+
+    line-height:1.8;
+
+    color:#94a3b8;
+}
+
+
+/* =====================================================
+   FRASE
+===================================================== */
+
+.frase{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    background:#080e1a;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+
+.frase h2{
+
+    color:#cbd5e1;
+
+    font-size:24px;
+
+    font-weight:400;
+
+    font-style:italic;
+}
+
+
+/* =====================================================
+   LÍNEA
+===================================================== */
+
+.linea1{
+
+    width:100%;
+
+    height:1px;
+
+    background:#243047;
+
+    margin:20px 0 50px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#64748b;
+
+    background:#070b14;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:768px){
+
+    .hero{
+
+        min-height:70vh;
+
+        padding:60px 20px;
+    }
+
+
+    .hero h1{
+
+        font-size:34px;
+    }
+
+
+    .hero p{
+
+        font-size:15px;
+    }
+
+
+    .cursos h2{
+
+        font-size:28px;
+    }
+
+
+    .contenedor{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .info{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .importante{
+
+        margin:30px 20px 50px;
+
+        padding:30px 20px;
+    }
+
+
+    .frase h2{
+
+        font-size:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <h1>
+        Rodrigo Jimenez Aguas
+    </h1>
+
+
+    <p>
+
+        Profesional orientado al análisis, mejora y automatización
+        de procesos, con experiencia en generación de reportes,
+        manejo y depuración de información, desarrollo de indicadores
+        y creación de herramientas para facilitar la toma de decisiones.
+
+        Interesado en transformar información operativa en soluciones
+        prácticas que permitan mejorar el control y seguimiento
+        de los procesos.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CARDS DE NAVEGACIÓN
+===================================================== -->
+
+<section class="info">
+
+
+    <!-- CARD 1 -->
+
+    <div
+        class="info-card"
+        onclick="irASeccion('competencias')"
+    >
+
+        <h3>
+            Competencias Técnicas
+        </h3>
+
+        <p>
+            Herramientas, tecnologías y conocimientos
+            que utilizo para desarrollar soluciones.
+        </p>
+
+    </div>
+
+
+
+    <!-- CARD 2 -->
+
+    <div
+        class="info-card"
+        onclick="irASeccion('proyectos')"
+    >
+
+        <h3>
+            Experiencia y Proyectos
+        </h3>
+
+        <p>
+            Proyectos desarrollados y soluciones
+            implementadas para mejorar procesos.
+        </p>
+
+    </div>
+
+
+
+    <!-- CARD 3 -->
+
+    <div
+        class="info-card"
+        onclick="irASeccion('logros')"
+    >
+
+        <h3>
+            Logros y Resultados
+        </h3>
+
+        <p>
+            Resultados obtenidos e impacto generado
+            mediante los proyectos realizados.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPETENCIAS TÉCNICAS
+===================================================== -->
+
+<section
+    id="competencias"
+    class="cursos"
+>
+
+    <div class="linea1"></div>
+
+
+    <h2>
+        Competencias Técnicas
+    </h2>
+
+
+
+    <div class="contenedor">
+
+
+        <!-- OFFICE -->
+
+        <div class="competencia-card">
+
+            <h3>
+                💻 Paquetería Office
+            </h3>
+
+            <p>
+
+                <strong>Microsoft Excel</strong><br>
+
+                Microsoft Word<br>
+
+                Microsoft PowerPoint<br>
+
+                Microsoft Outlook<br>
+
+                Microsoft Forms
+
+            </p>
+
+        </div>
+
+
+
+        <!-- PROGRAMACIÓN -->
+
+        <div class="competencia-card">
+
+            <h3>
+                🧑‍💻 Lenguajes y Tecnologías
+            </h3>
+
+            <p>
+
+                <strong>HTML</strong><br>
+
+                <strong>CSS</strong><br>
+
+                <strong>JavaScript</strong>
+
+            </p>
+
+        </div>
+
+
+
+        <!-- ANÁLISIS -->
+
+        <div class="competencia-card">
+
+            <h3>
+                📊 Análisis y Visualización
+            </h3>
+
+            <p>
+
+                Dashboards<br>
+
+                KPI<br>
+
+                Tablas dinámicas<br>
+
+                Análisis de datos<br>
+
+                Análisis de tendencias
+
+            </p>
+
+        </div>
+
+
+
+        <!-- AUTOMATIZACIÓN -->
+
+        <div class="competencia-card">
+
+            <h3>
+                ⚙️ Automatización
+            </h3>
+
+            <p>
+
+                Automatización de reportes<br>
+
+                Automatización mediante fórmulas<br>
+
+                Formularios digitales<br>
+
+                Herramientas de control<br>
+
+                Optimización de procesos
+
+            </p>
+
+        </div>
+
+
+
+        <!-- BASES DE DATOS -->
+
+        <div class="competencia-card">
+
+            <h3>
+                🗄️ Manejo de Información
+            </h3>
+
+            <p>
+
+                Organización de información<br>
+
+                Filtrado de datos<br>
+
+                Consolidación de información<br>
+
+                Depuración de datos<br>
+
+                Estructuración de bases de datos
+
+            </p>
+
+        </div>
+
+
+
+        <!-- INDICADORES -->
+
+        <div class="competencia-card">
+
+            <h3>
+                📈 Indicadores
+            </h3>
+
+            <p>
+
+                Desarrollo de KPI<br>
+
+                Seguimiento de indicadores<br>
+
+                Identificación de tendencias<br>
+
+                Análisis de resultados<br>
+
+                Identificación de áreas de oportunidad
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROYECTOS
+===================================================== -->
+
+<section
+    id="proyectos"
+    class="cursos"
+>
+
+    <div class="linea1"></div>
+
+
+    <h2>
+        Experiencia y Proyectos
+    </h2>
+
+
+
+    <div class="contenedor">
+
+
+        <!-- PROYECTO 1 -->
+
+        <a
+            href="Proyecto1.html"
+            class="card"
+        >
+
+            <div class="card-icon">
+                📊
+            </div>
+
+
+            <h3>
+                Análisis de Tiempos Extra y SNC
+            </h3>
+
+
+            <p>
+
+                Análisis de tiempos extra y SNC
+                (Servicio No Cubierto) para identificar
+                tendencias y áreas de oportunidad,
+                optimizando la cobertura y distribución
+                del personal.
+
+            </p>
+
+
+            <span class="btn">
+                Ver proyecto →
+            </span>
+
+        </a>
+
+    
+        
+
+</section>
+
+
+
+<!-- =====================================================
+     LOGROS Y RESULTADOS
+===================================================== -->
+
+<section
+    id="logros"
+    class="cursos"
+>
+
+    <div class="linea1"></div>
+
+
+    <h2>
+        Logros y Resultados
+    </h2>
+
+
+
+    <div class="contenedor">
+
+
+        <!-- LOGRO 1 -->
+
+        <div class="logro-card">
+
+            <div class="logro-icon">
+                📉
+            </div>
+
+
+            <h3>
+                Análisis de Información
+            </h3>
+
+
+            <p>
+
+                Transformación de información dispersa
+                en datos estructurados para facilitar
+                el análisis y seguimiento de los procesos.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- LOGRO 2 -->
+
+        <div class="logro-card">
+
+            <div class="logro-icon">
+                ⚙️
+            </div>
+
+
+            <h3>
+                Automatización
+            </h3>
+
+
+            <p>
+
+                Reducción de actividades manuales mediante
+                fórmulas, herramientas digitales y
+                automatización de reportes.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- LOGRO 3 -->
+
+        <div class="logro-card">
+
+            <div class="logro-icon">
+                📊
+            </div>
+
+
+            <h3>
+                Desarrollo de Indicadores
+            </h3>
+
+
+            <p>
+
+                Creación de indicadores y dashboards
+                para facilitar la interpretación
+                de información operativa.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- LOGRO 4 -->
+
+        <div class="logro-card">
+
+            <div class="logro-icon">
+                💡
+            </div>
+
+
+            <h3>
+                Mejora de Procesos
+            </h3>
+
+
+            <p>
+
+                Identificación de áreas de oportunidad
+                para mejorar el control, seguimiento
+                y toma de decisiones.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
+<section class="importante">
+
+
+    <h2>
+        Contacto
+    </h2>
+
+
+    <p>
+
+        Si deseas conocer más acerca de los proyectos,
+        herramientas o soluciones desarrolladas, puedes
+        consultar cada proyecto desde este portafolio.
+
+        <br><br>
+
+        El objetivo es mostrar cómo el análisis de datos,
+        la automatización y el desarrollo de herramientas
+        pueden contribuir a mejorar los procesos
+        y facilitar la toma de decisiones.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FRASE
+===================================================== -->
+
+<section class="frase">
+
+    <h2>
+
+        ✨ "Aprender constantemente es la mejor
+        herramienta para crecer profesionalmente."
+
+    </h2>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026 Rodrigo Jimenez Aguas | Portafolio Profesional
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+function irASeccion(id){
+
+    const seccion = document.getElementById(id);
+
+    if(seccion){
+
+        seccion.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"start"
+
+        });
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

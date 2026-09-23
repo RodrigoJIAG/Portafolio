@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tiempo Extra y SNC</title>
+
+<style>
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+:root{
+
+    --navy:#0f172a;
+    --navy-light:#172033;
+
+    --card:#1e293b;
+
+    --blue:#2563eb;
+    --blue-light:#3b82f6;
+
+    --white:#ffffff;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
+
+    --border:rgba(255,255,255,.08);
+
+}
+
+
+/* =====================================
+   GENERAL
+===================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+}
+
+
+body{
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #172033 0%,
+            #0f172a 45%,
+            #080d17 100%
+        );
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:var(--white);
+
+    padding:30px;
+
+}
+
+
+/* =====================================
+   CONTENEDOR PRINCIPAL
+===================================== */
+
+.container{
+
+    width:100%;
+
+    max-width:950px;
+
+    background:rgba(15,23,42,.92);
+
+    border-radius:18px;
+
+    padding:50px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,.45);
+
+}
+
+
+/* =====================================
+   TITULO
+===================================== */
+
+h1{
+
+    color:var(--white);
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    margin-bottom:10px;
+
+}
+
+
+.linea{
+
+    width:70px;
+
+    height:3px;
+
+    background:var(--blue);
+
+    margin:25px auto 35px;
+
+    border-radius:10px;
+
+}
+
+
+/* =====================================
+   SUBTITULOS
+===================================== */
+
+h3{
+
+    color:var(--white);
+
+    font-size:20px;
+
+    margin-bottom:12px;
+
+    font-weight:600;
+
+}
+
+
+p{
+
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+
+/* =====================================
+   LINEAS DIVISORIAS
+===================================== */
+
+.linea1{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:30px 0;
+
+}
+
+
+/* =====================================
+   INFORMACION
+===================================== */
+
+.info{
+
+    max-width:850px;
+
+    margin:30px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(300px,1fr));
+
+    gap:25px;
+
+}
+
+
+.info > div{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:25px;
+
+    text-align:left;
+
+    transition:.3s ease;
+
+}
+
+
+.info > div:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(59,130,246,.45);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+}
+
+
+.info h3{
+
+    color:var(--blue-light);
+
+    margin-bottom:15px;
+
+}
+
+
+/* =====================================
+   LISTA DE SOLUCION
+===================================== */
+
+.info p{
+
+    line-height:2;
+
+}
+
+
+/* =====================================
+   IMAGEN EXCEL
+===================================== */
+
+.info img{
+
+    display:block;
+
+    width:70px;
+
+    margin:20px auto 5px;
+
+}
+
+
+/* =====================================
+   BOTON
+===================================== */
+
+.btn-pdf{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:13px 28px;
+
+    background:var(--blue);
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+
+.btn-pdf:hover{
+
+    background:var(--blue-light);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.30);
+
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+
+    margin-top:40px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+
+/* =====================================
+   MODAL
+===================================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:9999;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(2,6,23,.90);
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    backdrop-filter:blur(5px);
+
+}
+
+
+/* =====================================
+   CONTENEDOR MODAL
+===================================== */
+
+.modal-contenido{
+
+    width:95%;
+
+    max-width:1100px;
+
+    height:90vh;
+
+    background:#111827;
+
+    border-radius:14px;
+
+    position:relative;
+
+    padding:15px;
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.60);
+
+}
+
+
+/* =====================================
+   PDF
+===================================== */
+
+#pdfViewer{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:white;
+
+}
+
+
+/* =====================================
+   CERRAR
+===================================== */
+
+.cerrar{
+
+    position:absolute;
+
+    right:12px;
+
+    top:-45px;
+
+    width:35px;
+
+    height:35px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    border:1px solid var(--border);
+
+    transition:.2s;
+
+}
+
+
+.cerrar:hover{
+
+    background:#334155;
+
+    transform:scale(1.05);
+
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:768px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+
+    .container{
+
+        padding:30px 20px;
+
+    }
+
+
+    h1{
+
+        font-size:30px;
+
+    }
+
+
+    p{
+
+        font-size:15px;
+
+    }
+
+
+    .info{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .modal{
+
+        padding:10px;
+
+    }
+
+
+    .modal-contenido{
+
+        width:100%;
+
+        height:90vh;
+
+        padding:8px;
+
+    }
+
+
+    .cerrar{
+
+        right:5px;
+
+        top:-45px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =================================
+         TITULO
+    ================================== -->
+
+    <h1>
+        Proyecto - Cuadre de personal
+    </h1>
+
+
+    <div class="linea"></div>
+
+
+    <!-- =================================
+         OBJETIVO
+    ================================== -->
+
+    <h3>
+        Objetivo
+    </h3>
+
+    <p>
+        Desarrollar una herramienta que facilite la administración y 
+        control de los CAET, permitiendo gestionar altas, bajas y actualizaciones, 
+        así como la asignación de departamento y grupo. Adicionalmente, deberá 
+        proporcionar una visualización del número de vacantes disponibles en cada 
+        departamento para facilitar la toma de decisiones y el control de la plantilla.
+
+    </p>
+
+
+    <div class="linea1"></div>
+
+
+    <!-- =================================
+         PROBLEMA
+    ================================== -->
+
+    <h3>
+        Problema identificado
+    </h3>
+
+    <p>
+        La gestión y actualización de los CAET, incluyendo las altas, bajas y asignaciones de departamento y grupo de cada persona, requerían realizar diferentes registros y consultas de manera manual, lo que dificultaba el control y actualización oportuna de la información.
+        Además, la falta de una herramienta centralizada para visualizar y administrar la información por departamento y grupo ocasionaba que cada colaborador manejara su propia base de datos, generando diferencias entre los registros y dificultando la **veracidad y confiabilidad de la información**.
+        Esta situación podía generar inconsistencias en la asignación y disponibilidad del personal, así como **costos adicionales derivados de una planeación y control inadecuados de la plantilla**.
+
+    </p>
+
+
+    <div class="linea1"></div>
+
+
+    <!-- =================================
+         INFORMACION
+    ================================== -->
+
+    <section class="info">
+
+
+        <!-- SOLUCION -->
+
+        <div>
+
+            <h3>
+                Solución
+            </h3>
+
+            <p>
+                Desarrollar e implementar una herramienta centralizada para la gestión de CAET, que permita administrar de manera estandarizada las altas, bajas y actualizaciones de los colaboradores, así como asignar y modificar su departamento y grupo de pertenencia.
+                La herramienta contará con una base de datos única y actualizada, evitando la duplicidad de registros y las diferencias entre bases de datos individuales. Además, permitirá consultar de manera rápida la distribución del personal y visualizar las vacantes disponibles por departamento.
+            </p>
+
+        </div>
+
+
+        <!-- HERRAMIENTAS -->
+
+        <div>
+
+            <h3>
+                Herramientas
+            </h3>
+
+            <img
+                src="https://cdn-icons-png.flaticon.com/128/888/888850.png"
+                alt="Excel"
+            >
+
+            <p style="text-align:center;">
+                Microsoft Excel
+            </p>
+
+            <img
+            src="https://images.icon-icons.com/3053/PNG/96/microsoft_onedrive_alt_macos_bigsur_icon_189976.png"
+            alt="OneDrive"
+            >
+
+            <p style="text-align:center;">
+                OneDrive
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <div class="linea1"></div>
+
+
+    <!-- =================================
+         BOTON PDF
+    ================================== -->
+
+    <button
+        class="btn-pdf"
+        onclick="abrirPDFModal()"
+    >
+
+        Ver detalles del proyecto →
+
+    </button>
+
+
+    <!-- =================================
+         MODAL PDF
+    ================================== -->
+
+    <div
+        id="pdfModal"
+        class="modal"
+    >
+
+        <div class="modal-contenido">
+
+
+            <span
+                class="cerrar"
+                onclick="cerrarPDFModal()"
+            >
+
+                &times;
+
+            </span>
+
+
+            <iframe
+                id="pdfViewer"
+                src=""
+                allow="autoplay"
+            >
+            </iframe>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        Jimenez Aguas Rodrigo
+
+    </footer>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   ABRIR PDF
+===================================== */
+
+function abrirPDFModal(){
+
+    const pdf =
+        "https://drive.google.com/file/d/12d0PXR7aM5A7-I_SZISriIjpLltPGVq0/preview";
+
+
+    document.getElementById("pdfViewer").src = pdf;
+
+
+    document.getElementById("pdfModal").style.display = "flex";
+
+}
+
+
+/* =====================================
+   CERRAR PDF
+===================================== */
+
+function cerrarPDFModal(){
+
+    document.getElementById("pdfModal").style.display = "none";
+
+
+    document.getElementById("pdfViewer").src = "";
+
+}
+
+
+/* =====================================
+   CERRAR AL DAR CLICK FUERA
+===================================== */
+
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("pdfModal");
+
+
+    if(event.target === modal){
+
+        cerrarPDFModal();
+
+    }
+
+}
+
+
+/* =====================================
+   CERRAR CON ESC
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            cerrarPDFModal();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
