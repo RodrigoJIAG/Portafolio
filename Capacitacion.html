@@ -616,9 +616,10 @@ footer{
     </h3>
 
     <p>
-        La gestión de la capacitación del personal era limitada, lo que contribuía a un incremento de hallazgos derivados de la falta de conocimiento o actualización en los diferentes temas.
-        Asimismo, las evaluaciones se realizaban en formato físico, generando un mayor consumo de papel y dificultando su control y seguimiento. La entrega y captura manual de cada evaluación prolongaba los tiempos de procesamiento, ocasionando retrasos en la consolidación de resultados y entrega de información dentro de los tiempos establecidos.
-
+        -Proceso anterior basado parcialmente en registros manuales.<br>
+        -Dificultad para consultar evaluacion y evidencias.<br>
+        -Retraso en la consolidacion de informacion.<br>
+        -Falta de material de estudio.
     </p>
 
 
@@ -641,7 +642,11 @@ footer{
             </h3>
 
             <p>
-               Desarrollar una página web de capacitación que permita al personal adquirir conocimientos mediante contenidos auditivos, visuales y didácticos, facilitando el aprendizaje y fortaleciendo sus competencias de manera accesible e interactiva.
+               -Plataforma web para evaluacion y seguimiento.<br>
+               -Base estructurada de personal.<br>
+               -Control de cursos y evaluacion.<br>
+               -Evidencias digitales.<br>
+               -Consulta por Persona/Grupo
             </p>
 
         </div>
@@ -698,7 +703,18 @@ footer{
     </div>
 
 </div>
-        
+
+       <div>
+          <h3>Impacto</h3>
+          <p>
+             +340 personas gestionadas/capacitadas.<br>
+             -Seguimiento centralizado.<br>
+             -Reduccion del trabajo manual.<br>
+             -Mayor trazabilidad de evaluaciones.<br>
+             -Evidencia disponible para auditoria.<br>
+             -Ahorro/costo evitado estimado: $930,000 MXN
+          </p>
+       </div>
 
     </section>
 
@@ -714,9 +730,16 @@ footer{
         onclick="abrirPDFModal()"
     >
 
-        Ver detalles del proyecto →
+        Ver documentacion del proyecto →
 
     </button>
+
+   <button
+    class="btn-pdf"
+    onclick="abrirgaleria()"
+>
+    Ver galeria →
+</button>
 
 
     <!-- =================================
@@ -779,6 +802,19 @@ function abrirPDFModal(){
 
     const pdf =
         "https://drive.google.com/file/d/12d0PXR7aM5A7-I_SZISriIjpLltPGVq0/preview";
+
+
+    document.getElementById("pdfViewer").src = pdf;
+
+
+    document.getElementById("pdfModal").style.display = "flex";
+
+}
+
+function abrirgaleria(){
+
+    const pdf =
+        "https://drive.google.com/file/d/1QWoztJYlYxU2sFzxo5VCONxPqWDNlSdP/view?usp=drive_link";
 
 
     document.getElementById("pdfViewer").src = pdf;
