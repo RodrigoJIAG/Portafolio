@@ -580,9 +580,9 @@ footer{
     </h3>
 
     <p>
-        La gestión y actualización de los CAET, incluyendo las altas, bajas y asignaciones de departamento y grupo de cada persona, requerían realizar diferentes registros y consultas de manera manual, lo que dificultaba el control y actualización oportuna de la información.
-        Además, la falta de una herramienta centralizada para visualizar y administrar la información por departamento y grupo ocasionaba que cada colaborador manejara su propia base de datos, generando diferencias entre los registros y dificultando la **veracidad y confiabilidad de la información**.
-        Esta situación podía generar inconsistencias en la asignación y disponibilidad del personal, así como **costos adicionales derivados de una planeación y control inadecuados de la plantilla**.
+        No existía una base centralizada ni un proceso unificado para conciliar la información de personal entre nómina y operación.
+        Esto provocaba que la detección de incidencias, como faltantes, horas extra o diferencias de altas y bajas, dependiera de revisiones
+        manuales entre múltiples archivos, dificultando el seguimiento oportuno y la toma de decisiones. 
 
     </p>
 
@@ -606,8 +606,10 @@ footer{
             </h3>
 
             <p>
-                Desarrollar e implementar una herramienta centralizada para la gestión de CAET, que permita administrar de manera estandarizada las altas, bajas y actualizaciones de los colaboradores, así como asignar y modificar su departamento y grupo de pertenencia.
-                La herramienta contará con una base de datos única y actualizada, evitando la duplicidad de registros y las diferencias entre bases de datos individuales. Además, permitirá consultar de manera rápida la distribución del personal y visualizar las vacantes disponibles por departamento.
+               Analicé la información de personal dispersa en tres archivos independientes, identifiqué la dificultad para consultar y validar datos de cada colaborador y 
+               estructuré las fuentes para relacionar registros mediante un identificador común. Desarrollé una herramienta de consulta que permite validar estatus, grupo y CAET, 
+               y planteé integrar el Kardex individual para complementar la información. Con esto, transformé un proceso de revisión manual y dispersa de múltiples archivos en una 
+               estructura de información relacionada, facilitando la identificación de diferencias y posibles inconsistencias en los registros de personal
             </p>
 
         </div>
@@ -640,7 +642,33 @@ footer{
             </p>
 
         </div>
+ <div>
+          <h3>Impacto</h3>
+          <p>
+             - Centralización de la consulta de información del personal en un solo punto.<br>
+             - Reducción de la revisión manual en múltiples archivos.<br> 
+             - Mayor facilidad para detectar diferencias e inconsistencias en los registros.<br>
+             - Mejora en la trazabilidad de la información.<br>
+             - Mayor claridad para la toma de decisiones operativas.<br> 
+             - Identificación más ágil de altas, bajas y cambios.<br> 
+             - Visibilidad de diferencias entre la información administrativa y la operativa.<br>
+             - Contribución a un control más ordenado y oportuno de la información del personal.
+          </p>
+       </div>
 
+       <div>
+          <h3>Tecnologias</h3>
+          <p>
+             DESARROLLO<br>
+             Microsoft Exce y herramientas de consultal.<br>
+             DATOS<br>
+             Gestion y Estructuracion de Excel, integracion y validacion de registros mediante identificadores comunes.<br>
+             AUTOMATIZACION<br>
+             Formulas y funciones, consultas estandarizadas y consolidacion de informacion.<br>
+             ANALISIS<br>
+             Deteccion de inconsistencias, trazabilidad, analisis de procesos y oportunidades de mejora.<br>
+          </p>
+       </div>
 
     </section>
 
@@ -721,7 +749,7 @@ footer{
 function abrirPDFModal(){
 
     const pdf =
-        "https://drive.google.com/file/d/12d0PXR7aM5A7-I_SZISriIjpLltPGVq0/preview";
+        "https://drive.google.com/file/d/1QpPprIm8dr1rh0lljJvzjbeX7Ea62Qxw/preview";
 
 
     document.getElementById("pdfViewer").src = pdf;
